@@ -95,6 +95,9 @@ Material:
         name: _CloudIntensity
       second: 0.8955224
     - first:
+        name: _CloudNightIntensity
+      second: 0.1
+    - first:
         name: _Cutoff
       second: 0.5
     - first:
