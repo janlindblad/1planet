@@ -546,6 +546,7 @@ GameObject:
   - 33: {fileID: 897925668}
   - 65: {fileID: 897925667}
   - 23: {fileID: 897925666}
+  - 114: {fileID: 897925670}
   m_Layer: 0
   m_Name: Monolith
   m_TagString: Untagged
@@ -615,6 +616,19 @@ Transform:
   - {fileID: 1799752957}
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &897925670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 897925665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeef35ea80199469087ffcb658b5f6fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  url: https://www.google.se/search?q=current+time&rlz=1C5CHFA_enSE576SE576&oq=current+&aqs=chrome.0.0j69i57j0l4.1447j0j4&sourceid=chrome&ie=UTF-8
+  status: {fileID: 1799752958}
 --- !u!1 &1001387518
 GameObject:
   m_ObjectHideFlags: 0

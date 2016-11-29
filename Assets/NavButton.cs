@@ -19,6 +19,20 @@ public class NavButton : MonoBehaviour {
 			lightA.intensity *= 0.95f;
 			lightB.intensity *= 0.95f;
 		}
+
+		/*
+		for (var touch : Touch in Input.touches) {
+			if (touch.phase == TouchPhase.Began) {
+				// Construct a ray from the current touch coordinates
+				var ray = Camera.main.ScreenPointToRay (touch.position);
+				if (Physics.Raycast (ray)) {
+					// Create a particle if hit
+					Instantiate (particle, transform.position, transform.rotation);
+				}
+			}
+		}
+		*/
+
 	}
 
 	public void OnClick() {
