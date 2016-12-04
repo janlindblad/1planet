@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class NewsFetcher : MonoBehaviour {
-	string url = "www.worldtimeserver.com/time-zones/cst";
+	string url = "https://192.168.1.9";
+	//string url = "www.worldtimeserver.com/time-zones/cst";
 	public TextMesh status;
 	WWW www;
 

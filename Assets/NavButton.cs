@@ -13,9 +13,9 @@ public class NavButton : MonoBehaviour {
 	void Update () {
 		if (pressed) {
 			if (gameObject.transform.position.y < -1) {
-				SceneManager.LoadScene ("Start");
+				SceneManager.LoadScene ("Mission");
 			}
-			gameObject.transform.position += new Vector3(0,-0.04f,0);
+			gameObject.transform.position += new Vector3(0,-0.02f,0);
 			lightA.intensity *= 0.95f;
 			lightB.intensity *= 0.95f;
 		}
