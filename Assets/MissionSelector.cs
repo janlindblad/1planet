@@ -37,7 +37,7 @@ public class MissionSelector : MonoBehaviour {
 			float step = movement_speed * Time.deltaTime;
 			transform.position = Vector3.MoveTowards(transform.position, targetPoint, step);
 			if(Vector3.Distance(transform.position, targetPoint) < 0.5f) {
-				SceneManager.LoadScene ("Status");
+				SceneManager.LoadScene ("Briefing");
 			}
 		}
 	}
