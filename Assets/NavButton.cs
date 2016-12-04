@@ -6,8 +6,11 @@ public class NavButton : MonoBehaviour {
 	private bool pressed;
 	public Light lightA;
 	public Light lightB;
+	float speed;
+
 	void Start () {
 		pressed = false;
+		speed = 0.02f;
 	}
 	
 	void Update () {
@@ -15,7 +18,8 @@ public class NavButton : MonoBehaviour {
 			if (gameObject.transform.position.y < -1) {
 				SceneManager.LoadScene ("Mission");
 			}
-			gameObject.transform.position += new Vector3(0,-0.02f,0);
+			gameObject.transform.position += new Vector3(0,-speed,0);
+			speed *= 1.2f;
 			lightA.intensity *= 0.95f;
 			lightB.intensity *= 0.95f;
 		}
