@@ -17,10 +17,12 @@ public class OrbitRotation : MonoBehaviour {
 		orbit.transform.RotateAround (Vector3.up, Vector3.up, speed);
 		speed *= 0.96f;
 		if(speed < 0.0001f) {
-			if(welcome)
-				SceneManager.LoadScene("Welcome");
-			else
-				SceneManager.LoadScene("Status");
+			if (GameControl.control.pad.welcomed) {
+				SceneManager.LoadScene ("Status");
+			} else {
+				GameControl.control.pad.welcomed = true;
+				SceneManager.LoadScene ("Welcome");
+			}
 		}
 	}
 }
