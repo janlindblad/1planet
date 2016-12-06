@@ -905,6 +905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0904e51a6424c688334f5a851ea8f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextScene: 
   lightA: {fileID: 0}
   lightB: {fileID: 0}
 --- !u!23 &663474378
@@ -2251,6 +2252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0904e51a6424c688334f5a851ea8f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextScene: Status
   lightA: {fileID: 0}
   lightB: {fileID: 0}
 --- !u!23 &1868632484
@@ -2377,6 +2379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0904e51a6424c688334f5a851ea8f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextScene: Mission
   lightA: {fileID: 0}
   lightB: {fileID: 0}
 --- !u!23 &2044583975

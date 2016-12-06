@@ -6,6 +6,7 @@ public class OrbitRotation : MonoBehaviour {
 	public GameObject orbit;
 	public Light lightsrc;
 	float speed = 5;
+	public bool welcome = true;
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +17,10 @@ public class OrbitRotation : MonoBehaviour {
 		orbit.transform.RotateAround (Vector3.up, Vector3.up, speed);
 		speed *= 0.96f;
 		if(speed < 0.0001f) {
-			SceneManager.LoadScene("Status");
+			if(welcome)
+				SceneManager.LoadScene("Welcome");
+			else
+				SceneManager.LoadScene("Status");
 		}
 	}
 }

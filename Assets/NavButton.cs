@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class NavButton : MonoBehaviour {
 	private bool pressed;
+	public string nextScene;
 	public Light lightA;
 	public Light lightB;
 	float speed;
@@ -16,12 +17,15 @@ public class NavButton : MonoBehaviour {
 	void Update () {
 		if (pressed) {
 			if (gameObject.transform.position.y < -1) {
-				SceneManager.LoadScene ("Mission");
+				if(nextScene != null)
+					SceneManager.LoadScene (nextScene);
 			}
 			gameObject.transform.position += new Vector3(0,-speed,0);
 			speed *= 1.2f;
-			lightA.intensity *= 0.95f;
-			lightB.intensity *= 0.95f;
+			if(lightA != null)
+				lightA.intensity *= 0.95f;
+			if(lightB != null)
+				lightB.intensity *= 0.95f;
 		}
 
 		/*

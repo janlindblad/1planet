@@ -796,6 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0904e51a6424c688334f5a851ea8f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextScene: Mission
   lightA: {fileID: 1540471343}
   lightB: {fileID: 2037198208}
 --- !u!1 &1965335575
