@@ -609,7 +609,7 @@ MonoBehaviour:
     En schackrutig knapp, som nedan, \xE4r signalen. Tryck p\xE5 den n\xE4r den dyker
     upp om du vill dela med dig. I \xF6vrigt kommer spelet inte att skicka n\xE5gon
     information tillbaka till v\xE5ra servrar.\n\nTryck p\xE5 den gr\xF6na knappen
-    f\xF6r att g\xE5 vidare.\n\n\n\n\n\nd\nd\nd\nd\n\nd\ne\n"
+    f\xF6r att g\xE5 vidare.\n"
 --- !u!222 &623581429
 CanvasRenderer:
   m_ObjectHideFlags: 0
