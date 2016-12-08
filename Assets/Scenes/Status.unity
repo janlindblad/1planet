@@ -208,8 +208,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: Status
+  animationStyle: fall
+  animationFrames: 20
   lightA: {fileID: 0}
   lightB: {fileID: 0}
+  lightAttenuation: 0.95
+  initialSpeed: 0.02
+  acceleration: 1.2
 --- !u!23 &314215179
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -269,7 +274,6 @@ GameObject:
   - 33: {fileID: 314373755}
   - 135: {fileID: 314373754}
   - 23: {fileID: 314373753}
-  - 114: {fileID: 314373752}
   m_Layer: 5
   m_Name: Sphere
   m_TagString: Untagged
@@ -290,20 +294,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 996347219}
   m_RootOrder: 1
---- !u!114 &314373752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 314373750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0904e51a6424c688334f5a851ea8f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextScene: 
-  lightA: {fileID: 0}
-  lightB: {fileID: 0}
 --- !u!23 &314373753
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -376,7 +366,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 359553824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -399,7 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -450,7 +440,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 486999583}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -473,7 +463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -482,7 +472,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -493,7 +483,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mission
+  m_Text: Uppdrag
 --- !u!222 &486999586
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -518,7 +508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &490669554
 RectTransform:
   m_ObjectHideFlags: 0
@@ -551,8 +541,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: Level1
+  animationStyle: fall
+  animationFrames: 20
   lightA: {fileID: 0}
   lightB: {fileID: 0}
+  lightAttenuation: 0.95
+  initialSpeed: 0.02
+  acceleration: 1.2
 --- !u!114 &490669556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,6 +684,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 193448, guid: 3088d92b167b01c4aa1efca7efe75ce2, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3088d92b167b01c4aa1efca7efe75ce2, type: 2}
   m_IsPrefabParent: 0
@@ -716,7 +715,7 @@ TerrainCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 714768677}
   m_Material: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_TerrainData: {fileID: 15600000, guid: 838c8efb816a74482becab17b007ab1e, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &714768679
@@ -867,6 +866,7 @@ GameObject:
   - 222: {fileID: 996347222}
   - 114: {fileID: 996347221}
   - 114: {fileID: 996347220}
+  - 114: {fileID: 996347223}
   m_Layer: 5
   m_Name: ShareButton
   m_TagString: Untagged
@@ -933,7 +933,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 314373752}
+      - m_Target: {fileID: 996347223}
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -979,6 +979,25 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 996347218}
+--- !u!114 &996347223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 996347218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0904e51a6424c688334f5a851ea8f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: 
+  animationStyle: spin
+  animationFrames: 20
+  lightA: {fileID: 0}
+  lightB: {fileID: 0}
+  lightAttenuation: 0.95
+  initialSpeed: 20
+  acceleration: 0.9
 --- !u!1 &1120984976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,7 +1334,6 @@ GameObject:
   - 33: {fileID: 1923258365}
   - 135: {fileID: 1923258364}
   - 23: {fileID: 1923258363}
-  - 114: {fileID: 1923258366}
   m_Layer: 5
   m_Name: Sphere
   m_TagString: Untagged
@@ -1384,20 +1402,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1923258361}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1923258366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1923258361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0904e51a6424c688334f5a851ea8f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextScene: Mission
-  lightA: {fileID: 1540471343}
-  lightB: {fileID: 2037198208}
 --- !u!1 &1965335575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,6 +1413,7 @@ GameObject:
   - 222: {fileID: 1965335579}
   - 114: {fileID: 1965335578}
   - 114: {fileID: 1965335577}
+  - 114: {fileID: 1965335580}
   m_Layer: 5
   m_Name: MissionButton
   m_TagString: Untagged
@@ -1475,7 +1480,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1923258366}
+      - m_Target: {fileID: 1965335580}
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -1521,6 +1526,25 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1965335575}
+--- !u!114 &1965335580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1965335575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0904e51a6424c688334f5a851ea8f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: Mission
+  animationStyle: fall
+  animationFrames: 20
+  lightA: {fileID: 1540471343}
+  lightB: {fileID: 2037198208}
+  lightAttenuation: 0.95
+  initialSpeed: 0.02
+  acceleration: 1.2
 --- !u!1 &2037198207
 GameObject:
   m_ObjectHideFlags: 0

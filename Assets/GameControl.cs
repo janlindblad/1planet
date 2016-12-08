@@ -12,10 +12,11 @@ public class GameControl : MonoBehaviour {
 
 	public static GameControl control;
 	public PersistGameData pad;
-	String persistFileName = Application.persistentDataPath + "/gamestate.dat";
+	String persistFileName;
 	BinaryFormatter bf = new BinaryFormatter ();
 
 	void Awake () {
+		persistFileName = Application.persistentDataPath + "/gamestate.dat";
 		if (control == null) {
 			DontDestroyOnLoad (gameObject);
 			control = this;
@@ -24,10 +25,9 @@ public class GameControl : MonoBehaviour {
 		}
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
+	void Update () {	
 	}
+
 	void OnEnable() {
 		pad = Load ();
 	}
@@ -53,4 +53,3 @@ public class GameControl : MonoBehaviour {
 		}
 	}
 }
-

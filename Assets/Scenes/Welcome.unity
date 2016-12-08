@@ -204,6 +204,7 @@ GameObject:
   - 222: {fileID: 194075494}
   - 114: {fileID: 194075493}
   - 114: {fileID: 194075492}
+  - 114: {fileID: 194075495}
   m_Layer: 5
   m_Name: ShareButton
   m_TagString: Untagged
@@ -270,7 +271,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 212631972}
+      - m_Target: {fileID: 194075495}
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -316,6 +317,25 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 194075490}
+--- !u!114 &194075495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 194075490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0904e51a6424c688334f5a851ea8f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: 
+  animationStyle: spin
+  animationFrames: 20
+  lightA: {fileID: 0}
+  lightB: {fileID: 0}
+  lightAttenuation: 0.95
+  initialSpeed: 20
+  acceleration: 0.9
 --- !u!1 &212631970
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +347,6 @@ GameObject:
   - 33: {fileID: 212631975}
   - 135: {fileID: 212631974}
   - 23: {fileID: 212631973}
-  - 114: {fileID: 212631972}
   m_Layer: 5
   m_Name: Sphere
   m_TagString: Untagged
@@ -348,20 +367,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 194075491}
   m_RootOrder: 1
---- !u!114 &212631972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 212631970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0904e51a6424c688334f5a851ea8f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextScene: 
-  lightA: {fileID: 0}
-  lightB: {fileID: 0}
 --- !u!23 &212631973
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -427,7 +432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &232870986
 RectTransform:
   m_ObjectHideFlags: 0
@@ -734,8 +739,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: 
+  animationStyle: spin
+  animationFrames: 20
   lightA: {fileID: 0}
   lightB: {fileID: 0}
+  lightAttenuation: 0.95
+  initialSpeed: 0.02
+  acceleration: 1.2
 --- !u!23 &752241133
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -795,6 +805,7 @@ GameObject:
   - 222: {fileID: 765283700}
   - 114: {fileID: 765283699}
   - 114: {fileID: 765283698}
+  - 114: {fileID: 765283701}
   m_Layer: 5
   m_Name: AcceptButton
   m_TagString: Untagged
@@ -861,7 +872,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1580931958}
+      - m_Target: {fileID: 765283701}
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -907,6 +918,25 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 765283696}
+--- !u!114 &765283701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 765283696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0904e51a6424c688334f5a851ea8f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: Status
+  animationStyle: fall
+  animationFrames: 20
+  lightA: {fileID: 0}
+  lightB: {fileID: 0}
+  lightAttenuation: 0.95
+  initialSpeed: 0.02
+  acceleration: 1.2
 --- !u!1 &819944688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1484,7 +1514,6 @@ GameObject:
   - 33: {fileID: 1580931961}
   - 135: {fileID: 1580931960}
   - 23: {fileID: 1580931959}
-  - 114: {fileID: 1580931958}
   m_Layer: 5
   m_Name: Sphere
   m_TagString: Untagged
@@ -1505,20 +1534,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 765283697}
   m_RootOrder: 1
---- !u!114 &1580931958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1580931956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0904e51a6424c688334f5a851ea8f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextScene: Status
-  lightA: {fileID: 0}
-  lightB: {fileID: 0}
 --- !u!23 &1580931959
 MeshRenderer:
   m_ObjectHideFlags: 0
