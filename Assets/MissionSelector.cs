@@ -41,4 +41,8 @@ public class MissionSelector : MonoBehaviour {
 			}
 		}
 	}
+	public void MissionClicked() {
+		ball = gameObject.transform;
+		Debug.Log ("Mission button clicked " + ball.name);
+	}
 }
