@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MissionID {
 	public string id;
@@ -9,6 +11,22 @@ public class MissionID {
 	}
 	public override string ToString() {
 		return this.id;
+	}
+}
+
+public class OngoingMission {
+	public MissionID id;
+	public DateTime start;
+	public DateTime end;
+
+	OngoingMission(MissionID mid) {
+		this.id = mid;
+		this.start = DateTime.Now;
+		this.end = start.AddHours (24);
+		//DateTime.Now.ToString("hh:mm:ss"); 
+		//TimeSpan span = endTime.Subtract ( startTime );
+		//Console.WriteLine( "Time Difference (seconds): " + span.Seconds );
+
 	}
 }
 
@@ -22,7 +40,6 @@ public class Mission : MonoBehaviour {
 	public int level;
 	public string short_desc;
 	public string long_desc;
-	GameObject sphere;
 
 	public Mission(MissionID mid, string title, int size, string balltype, 
 		int level, string short_desc, string long_desc,
@@ -38,16 +55,12 @@ public class Mission : MonoBehaviour {
 		this.downgrade = downgrade;
 	}
 
+	void Awake() {
+		DontDestroyOnLoad (this);
+	}
 
 	void Start () {
-		sphere = this.transform.FindChild("Sphere").gameObject;
-		float bsiz = 0.5f + size / 10;
-		sphere.transform.localScale = new Vector3 (bsiz, bsiz, bsiz);
-		MeshRenderer mr = sphere.GetComponent<MeshRenderer>();
-		Debug.Log (mr);
-		Material mat = Resources.Load("Materials/proto_map") as Material;
-		Debug.Log (mat);
-		mr.material = mat;
+		Debug.Log ("In Mission.start()");
 	}
 	
 	void Update () {		

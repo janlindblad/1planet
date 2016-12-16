@@ -8,11 +8,9 @@ public class OrbitRotation : MonoBehaviour {
 	float speed = 5;
 	public bool welcome = true;
 
-	// Use this for initialization
 	void Start () {
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		orbit.transform.RotateAround (Vector3.up, Vector3.up, speed);
 		speed *= 0.96f;

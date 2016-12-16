@@ -9,7 +9,7 @@ public class GameControl : MonoBehaviour {
 	[Serializable] public class PersistGameData {
 		public Boolean welcomed = false;
 		public MissionID[] completed_missions = {};
-		public MissionID[] ongoing_missions = {};
+		public OngoingMission[] ongoing_missions = {};
 	}
 
 	public static GameControl control;
@@ -59,7 +59,7 @@ public class GameControl : MonoBehaviour {
 }
 
 public class MissionDB {
-	MissionID[] get_ids() {
+	public MissionID[] get_ids() {
 		return new MissionID[] { 
 			new MissionID("1.1"), 
 			new MissionID("1.2"),
@@ -78,7 +78,7 @@ public class MissionDB {
 	//MissionID mid, string title, int size, string balltype, 
 	//int level, string short_desc, string long_desc,
 	//MissionID upgrade = null, MissionID downgrade = null
-	Mission get(MissionID mid) {
+	public Mission get(MissionID mid) {
 		if (mid.id == "1:1") {
 			return new Mission (
 				new MissionID("1:1"), 
