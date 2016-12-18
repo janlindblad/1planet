@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
@@ -8,8 +9,14 @@ using System.IO;
 public class GameControl : MonoBehaviour {
 	[Serializable] public class PersistGameData {
 		public Boolean welcomed = false;
-		public MissionID[] completed_missions = {};
-		public OngoingMission[] ongoing_missions = {};
+		public List<MissionID> completed_missions;
+		public List<MissionID> ongoing_missions;
+		public List<OngoingMission> ongoing_mission_start_times;
+
+		public PersistGameData() {
+			completed_missions = new List<MissionID>();
+			ongoing_missions = new List<MissionID>();
+		}
 	}
 
 	public static GameControl control;
@@ -49,7 +56,7 @@ public class GameControl : MonoBehaviour {
 		fs.Close ();
 	}
 	public PersistGameData Load() {
-		if(File.Exists(persistFileName)) {
+		if(false && File.Exists(persistFileName)) {
 			FileStream fs = File.Open (persistFileName, FileMode.Open);
 			PersistGameData gd = (PersistGameData)bf.Deserialize (fs);
 			fs.Close ();

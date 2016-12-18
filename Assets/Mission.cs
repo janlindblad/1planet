@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MissionID {
+public class MissionID : IEquatable<MissionID> {
 	public string id;
 	public MissionID(string id) {
 		this.id = id;
@@ -12,6 +12,22 @@ public class MissionID {
 	public override string ToString() {
 		return this.id;
 	}
+	public override int GetHashCode()
+	{
+		return id.GetHashCode();
+	}
+	public override bool Equals(object obj) {
+		if (obj == null) return false;
+		MissionID objAsMissionID = obj as MissionID;
+		if (objAsMissionID == null) return false;
+		else return Equals(objAsMissionID);
+	}
+
+	public bool Equals(MissionID mid) {
+		if (mid == null) return false;
+		return this.id == mid.id;
+	}
+		
 }
 
 public class OngoingMission {
@@ -19,14 +35,19 @@ public class OngoingMission {
 	public DateTime start;
 	public DateTime end;
 
-	OngoingMission(MissionID mid) {
+	public OngoingMission(Mission mission) {
+		init(mission.id);
+	}
+	public OngoingMission(MissionID mid) {
+		init(mid);
+	}
+	void init(MissionID mid) {
 		this.id = mid;
 		this.start = DateTime.Now;
 		this.end = start.AddHours (24);
 		//DateTime.Now.ToString("hh:mm:ss"); 
 		//TimeSpan span = endTime.Subtract ( startTime );
-		//Console.WriteLine( "Time Difference (seconds): " + span.Seconds );
-
+		//Console.WriteLine( "Time Difference (seconds): " + span.Seconds );			
 	}
 }
 

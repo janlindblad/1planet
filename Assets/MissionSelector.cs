@@ -52,9 +52,20 @@ public class MissionSelector : MonoBehaviour {
 	void fillMissionPipeline() {
 		float y = 2.0f;
 		foreach(var mid in GameControl.missiondb.get_ids()) {
-			MissionBall mb = gameObject.AddComponent<MissionBall>();
-			mb.init(mid, pipe, new Vector3((Random.value-0.5f)*2.0f, y, 0));
-			y += 2.0f;
+			Debug.Log (GameControl.control);
+			Debug.Log (GameControl.control.pad);
+			Debug.Log ("Ongoing missions: "+GameControl.control.pad.ongoing_missions.Count.ToString());
+			Debug.Log (GameControl.control.pad.ongoing_missions.Contains (mid));
+			if (GameControl.control.pad.completed_missions.Contains (mid) ||
+			    GameControl.control.pad.ongoing_missions.Contains (mid)) {
+				Debug.Log ("Skipping " + mid.id);
+				continue;
+			} else {
+				Debug.Log ("Instantiating " + mid.id);
+				MissionBall mb = gameObject.AddComponent<MissionBall> ();
+				mb.init (mid, pipe, new Vector3 ((Random.value - 0.5f) * 2.0f, y, 0));
+				y += 2.0f;
+			}
 		}
 	}
 }
