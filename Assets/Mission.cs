@@ -30,7 +30,7 @@ public class OngoingMission {
 	}
 }
 
-public class Mission : MonoBehaviour {
+public class Mission { //: MonoBehaviour {
 	public MissionID id;
 	public MissionID upgrade;
 	public MissionID downgrade;
@@ -56,7 +56,7 @@ public class Mission : MonoBehaviour {
 	}
 
 	void Awake() {
-		DontDestroyOnLoad (this);
+		//DontDestroyOnLoad (this);
 	}
 
 	void Start () {

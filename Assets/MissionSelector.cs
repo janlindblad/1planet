@@ -7,12 +7,14 @@ public class MissionSelector : MonoBehaviour {
 	Camera cam;
 	Vector3 targetPoint;
 	Transform ball = null;
+	public GameObject pipe;
 
 	float rotation_speed = 1f;
 	float movement_speed = 1f;
 
 	void Start () {
 		cam = GetComponent<Camera> ();
+		fillMissionPipeline ();
 	}
 	
 	void Update () {
@@ -44,5 +46,14 @@ public class MissionSelector : MonoBehaviour {
 	public void MissionClicked() {
 		ball = gameObject.transform;
 		Debug.Log ("Mission button clicked " + ball.name);
+	}
+
+	void fillMissionPipeline() {
+		float y = 2.0f;
+		foreach(var mid in GameControl.missiondb.get_ids()) {
+			MissionBall mb = gameObject.AddComponent<MissionBall>();
+			mb.init(mid, pipe, new Vector3((Random.value-0.5f)*2.0f, y, 0));
+			y += 2.0f;
+		}
 	}
 }
