@@ -27,6 +27,7 @@ public class MissionSelector : MonoBehaviour {
 				if (hit.transform.tag == "MissionBall") {
 					ball = hit.transform;
 					Debug.Log ("Hit " + ball.name);
+					GameControl.control.selected_mission = new MissionID(ball.name);
 				}
 			}
 		} else {

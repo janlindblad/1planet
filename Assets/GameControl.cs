@@ -15,6 +15,9 @@ public class GameControl : MonoBehaviour {
 	public static GameControl control;
 	public static MissionDB missiondb;
 	public PersistGameData pad;
+
+	public MissionID selected_mission;
+
 	String persistFileName;
 	BinaryFormatter bf = new BinaryFormatter ();
 
