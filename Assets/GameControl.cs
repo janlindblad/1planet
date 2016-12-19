@@ -86,8 +86,8 @@ public class MissionDB {
 			new MissionID("1:8"),
 			new MissionID("1:9"),
 			new MissionID("1:10"),
-			new MissionID("1:11"),
-			new MissionID("1:12"),
+			//new MissionID("1:11"),
+			//new MissionID("1:12"),
 		};
 	}
 	//MissionID mid, string title, int size, string balltype, 

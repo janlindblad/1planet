@@ -31,11 +31,11 @@ public class MissionBall : MonoBehaviour {
 	}
 
 	void Start () {
-		Debug.Log ("In start()");
+		//Debug.Log ("In start()");
 		if (SceneManager.GetActiveScene ().name == "Briefing") {
-			Debug.Log ("In briefing scene");
+			//Debug.Log ("In briefing scene");
 		} else {
-			Debug.Log ("In scene "+SceneManager.GetActiveScene().name);
+			//Debug.Log ("In scene "+SceneManager.GetActiveScene().name);
 		}
 
 	}

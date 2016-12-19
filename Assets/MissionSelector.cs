@@ -8,6 +8,7 @@ public class MissionSelector : MonoBehaviour {
 	Vector3 targetPoint;
 	Transform ball = null;
 	public GameObject pipe;
+	public GameObject panel;
 
 	float rotation_speed = 1f;
 	float movement_speed = 1f;
@@ -50,21 +51,24 @@ public class MissionSelector : MonoBehaviour {
 	}
 
 	void fillMissionPipeline() {
-		float y = 2.0f;
+		Debug.Log ("fillMissionPipeline");
+		float pipe_y = 2.0f;
+		float panel_y = 0.0f;
 		foreach(var mid in GameControl.missiondb.get_ids()) {
-			Debug.Log (GameControl.control);
-			Debug.Log (GameControl.control.pad);
-			Debug.Log ("Ongoing missions: "+GameControl.control.pad.ongoing_missions.Count.ToString());
 			Debug.Log (GameControl.control.pad.ongoing_missions.Contains (mid));
-			if (GameControl.control.pad.completed_missions.Contains (mid) ||
-			    GameControl.control.pad.ongoing_missions.Contains (mid)) {
+			if (GameControl.control.pad.completed_missions.Contains (mid)) {
 				Debug.Log ("Skipping " + mid.id);
 				continue;
+			} else if (GameControl.control.pad.ongoing_missions.Contains (mid)) {
+				Debug.Log ("Instantiating button " + mid.id);
+				MissionButton mb = gameObject.AddComponent<MissionButton> ();
+				mb.init (mid, panel, new Vector3 (0, -panel_y, 0));
+				panel_y += 0.65f;
 			} else {
-				Debug.Log ("Instantiating " + mid.id);
+				Debug.Log ("Instantiating ball " + mid.id);
 				MissionBall mb = gameObject.AddComponent<MissionBall> ();
-				mb.init (mid, pipe, new Vector3 ((Random.value - 0.5f) * 2.0f, y, 0));
-				y += 2.0f;
+				mb.init (mid, pipe, new Vector3 ((Random.value - 0.5f) * 2.0f, pipe_y, 0));
+				pipe_y += 2.0f;
 			}
 		}
 	}

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MissionID : IEquatable<MissionID> {
+[Serializable] public class MissionID : IEquatable<MissionID> {
 	public string id;
 	public MissionID(string id) {
 		this.id = id;
@@ -30,7 +30,7 @@ public class MissionID : IEquatable<MissionID> {
 		
 }
 
-public class OngoingMission {
+[Serializable] public class OngoingMission {
 	public MissionID id;
 	public DateTime start;
 	public DateTime end;
