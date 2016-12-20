@@ -60,10 +60,15 @@ public class MissionSelector : MonoBehaviour {
 				Debug.Log ("Skipping " + mid.id);
 				continue;
 			} else if (GameControl.control.pad.ongoing_missions.Contains (mid)) {
-				Debug.Log ("Instantiating button " + mid.id);
+				Debug.Log ("Instantiating button " + mid.id + " at y=" + (-panel_y).ToString());
 				MissionButton mb = gameObject.AddComponent<MissionButton> ();
 				mb.init (mid, panel, new Vector3 (0, -panel_y, 0));
-				panel_y += 0.65f;
+				panel_y += 2*65.0f;
+				float scrollHeight = panel_y;
+				//panel.transform.
+				RectTransform containerRectTransform = panel.GetComponent<RectTransform>();
+				containerRectTransform.offsetMin = new Vector2(containerRectTransform.offsetMin.x, -scrollHeight / 2);
+				containerRectTransform.offsetMax = new Vector2(containerRectTransform.offsetMax.x, scrollHeight / 2);
 			} else {
 				Debug.Log ("Instantiating ball " + mid.id);
 				MissionBall mb = gameObject.AddComponent<MissionBall> ();

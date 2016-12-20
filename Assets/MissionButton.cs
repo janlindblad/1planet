@@ -17,11 +17,12 @@ public class MissionButton : MonoBehaviour {
 		Debug.Log ("ended_mission");
 		button = Instantiate(
 			ended_mission,
-			position, 
+			new Vector3 (0, 0, 0), 
 			Quaternion.identity,
 			parent.transform) as GameObject;
 		button.name = mission.id.id;
-		button.transform.position = position;
+		button.transform.localScale = new Vector3 (1, 1, 1);
+		button.transform.localPosition = position;
 		Debug.Log ("Instantiantion successful");
 	}
 
