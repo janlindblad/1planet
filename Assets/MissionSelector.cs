@@ -13,6 +13,8 @@ public class MissionSelector : MonoBehaviour {
 	float rotation_speed = 1f;
 	float movement_speed = 1f;
 
+	float button_offset = 65.0f;
+
 	void Start () {
 		cam = GetComponent<Camera> ();
 		fillMissionPipeline ();
@@ -53,28 +55,29 @@ public class MissionSelector : MonoBehaviour {
 	void fillMissionPipeline() {
 		Debug.Log ("fillMissionPipeline");
 		float pipe_y = 2.0f;
-		float panel_y = 0.0f;
 		foreach(var mid in GameControl.missiondb.get_ids()) {
-			Debug.Log (GameControl.control.pad.ongoing_missions.Contains (mid));
-			if (GameControl.control.pad.completed_missions.Contains (mid)) {
-				Debug.Log ("Skipping " + mid.id);
+			if (GameControl.control.pad.ongoing_missions.Contains (mid) ||
+				GameControl.control.pad.completed_missions.Contains (mid)) {
+				Debug.Log ("Skipping ongoing/completed mission " + mid.id);
 				continue;
-			} else if (GameControl.control.pad.ongoing_missions.Contains (mid)) {
-				Debug.Log ("Instantiating button " + mid.id + " at y=" + (-panel_y).ToString());
-				MissionButton mb = gameObject.AddComponent<MissionButton> ();
-				mb.init (mid, panel, new Vector3 (0, -panel_y, 0));
-				panel_y += 2*65.0f;
-				float scrollHeight = panel_y;
-				//panel.transform.
-				RectTransform containerRectTransform = panel.GetComponent<RectTransform>();
-				containerRectTransform.offsetMin = new Vector2(containerRectTransform.offsetMin.x, -scrollHeight / 2);
-				containerRectTransform.offsetMax = new Vector2(containerRectTransform.offsetMax.x, scrollHeight / 2);
 			} else {
 				Debug.Log ("Instantiating ball " + mid.id);
 				MissionBall mb = gameObject.AddComponent<MissionBall> ();
 				mb.init (mid, pipe, new Vector3 ((Random.value - 0.5f) * 2.0f, pipe_y, 0));
 				pipe_y += 2.0f;
 			}
+		}
+		float panel_y = 0.0f;
+		foreach (var mid in GameControl.control.pad.ongoing_missions) {
+			Debug.Log ("Instantiating button " + mid.id + " at y=" + (panel_y).ToString ());
+			panel_y += button_offset;
+			RectTransform containerRectTransform = panel.GetComponent<RectTransform> ();
+			containerRectTransform.offsetMin = new Vector2 (containerRectTransform.offsetMin.x, -button_offset);
+			containerRectTransform.offsetMax = new Vector2 (containerRectTransform.offsetMax.x, -panel_y-button_offset/2);
+			//containerRectTransform.offsetMin = new Vector2(containerRectTransform.offsetMin.x, -scrollHeight / 2);
+			//containerRectTransform.offsetMax = new Vector2(containerRectTransform.offsetMax.x, scrollHeight / 2);
+			MissionButton mb = gameObject.AddComponent<MissionButton> ();
+			mb.init (mid, panel, new Vector3 (0, panel_y - button_offset, 0));
 		}
 	}
 }
