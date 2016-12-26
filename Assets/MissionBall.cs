@@ -7,7 +7,7 @@ public class MissionBall : MonoBehaviour {
 	GameObject sphere;
 	Mission mission;
 
-	public void init(MissionID mid, GameObject parent, Vector3 position) {
+	public void init(MissionID mid, GameObject parent, Vector3 position, bool freeze = false) {
 		mission = GameControl.missiondb.get_mission (mid);
 		if(mission == null)
 			Debug.Log ("MissionBall: mid " + mid.id + " not found");
@@ -28,6 +28,18 @@ public class MissionBall : MonoBehaviour {
 		//Debug.Log (mat);
 		//mr.material = mat;
 		Debug.Log ("Instantiantion successful");
+		if (freeze) {
+			sphere.GetComponent<Rigidbody>().constraints = 
+				RigidbodyConstraints.FreezeRotationX | 
+				RigidbodyConstraints.FreezeRotationY |
+				RigidbodyConstraints.FreezePositionX | 
+				RigidbodyConstraints.FreezePositionY |
+				RigidbodyConstraints.FreezePositionZ;
+			sphere.transform.localScale = new Vector3 (40f, 40f, 0.4f);
+			sphere.transform.localPosition = new Vector3 (-140f, 0f, -0.1f);
+			Collider collider = gameObject.transform.GetComponentInChildren<Collider> ();
+			collider.enabled = false;
+		}
 	}
 
 	void Start () {

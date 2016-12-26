@@ -45,7 +45,10 @@ public class GameControl : MonoBehaviour {
 
 	void OnEnable() {
 		pad = Load ();
+		// For testing
+		pad.ongoing_missions = new List<MissionID> { new MissionID("1:2"), };
 	}
+
 	void OnDisable() {
 		Save (pad);
 	}
