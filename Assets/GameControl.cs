@@ -45,6 +45,7 @@ public class GameControl : MonoBehaviour {
 	void OnEnable() {
 		pad = Load ();
 		// For testing
+		/*
 		commence_mission(new MissionID("1:2"));
 		pad.ongoing_missions.Add(new OngoingMission(
 			new MissionID("1:3"),
@@ -52,6 +53,7 @@ public class GameControl : MonoBehaviour {
 		pad.ongoing_missions.Add(new OngoingMission(
 			new MissionID("1:4"),
 			DateTime.Now.AddDays(-2.2), 1));
+		*/
 	}
 
 	void OnDisable() {
@@ -64,7 +66,7 @@ public class GameControl : MonoBehaviour {
 		fs.Close ();
 	}
 	public PersistGameData Load() {
-		if(false && File.Exists(persistFileName)) {
+		if(File.Exists(persistFileName)) {
 			FileStream fs = File.Open (persistFileName, FileMode.Open);
 			PersistGameData gd = (PersistGameData)bf.Deserialize (fs);
 			fs.Close ();

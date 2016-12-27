@@ -42,6 +42,11 @@ public class MissionButton : MonoBehaviour {
 		button.transform.localScale = new Vector3 (1, 1, 1);
 		button.transform.localPosition = position;
 		Debug.Log ("MissionButton: Instantiantion successful");
+		Button uibutton = button.GetComponent<Button>();
+		uibutton.onClick.AddListener(() => {
+			button_clicked();
+		});
+
 
 		// Setup sphere
 		ball = button.AddComponent<MissionBall> ();
@@ -65,6 +70,10 @@ public class MissionButton : MonoBehaviour {
 		} else {
 			mission_timer.enabled = false;
 		}
+	}
+
+	void button_clicked() {
+		Debug.Log ("MissionButton " + omi.id.id + " clicked");
 	}
 
 	// Use this for initialization
