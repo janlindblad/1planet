@@ -9,26 +9,38 @@ public class MissionButton : MonoBehaviour {
 	Text mission_title;
 	Slider mission_timer;
 	Text mission_timer_text;
+	OngoingMission omi;
 	Mission mission;
 
 	public void init(MissionID mid, GameObject parent, Vector3 position) {
+		omi = GameControl.control.get_ongoing_mission (mid);
+		if (omi == null) {
+			Debug.LogError ("MissionButton: mid " + mid.id + " not ongoing");
+			return;
+		}
 		mission = GameControl.missiondb.get_mission (mid);
-		if(mission == null)
-			Debug.Log ("MissionButton: mid " + mid.id + " not found");
-		Debug.Log ("MissionButton: mid " + mid.id + " size:" + mission.size.ToString()+
-			" prefab:"+"Prefabs/MissionButton/"+mission.balltype);
-		//sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-		Object ended_mission = Resources.Load("Prefabs/MissionButtons/EndedMission");
-		Debug.Log ("ended_mission");
+		Object mission_prefab;
+		switch (omi.get_timing ()) {
+		case OngoingMission.Timing.Ongoing:
+			mission_prefab = Resources.Load ("Prefabs/MissionButtons/OngoingMission");
+			break;
+		case OngoingMission.Timing.Ended:
+			mission_prefab = Resources.Load ("Prefabs/MissionButtons/EndedMission");
+			break;
+		default:
+		case OngoingMission.Timing.Overdue:
+			mission_prefab = Resources.Load ("Prefabs/MissionButtons/OverdueMission");
+			break;
+		}
 		button = Instantiate(
-			ended_mission,
+			mission_prefab,
 			new Vector3 (0, 0, 0), 
 			Quaternion.identity,
 			parent.transform) as GameObject;
 		button.name = mission.id.id;
 		button.transform.localScale = new Vector3 (1, 1, 1);
 		button.transform.localPosition = position;
-		Debug.Log ("Instantiantion successful");
+		Debug.Log ("MissionButton: Instantiantion successful");
 
 		// Setup sphere
 		ball = button.AddComponent<MissionBall> ();

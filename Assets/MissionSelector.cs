@@ -53,10 +53,10 @@ public class MissionSelector : MonoBehaviour {
 	}
 
 	void fillMissionPipeline() {
-		Debug.Log ("fillMissionPipeline");
+		Debug.Log ("===== fillMissionPipeline: Balls =====");
 		float pipe_y = 2.0f;
 		foreach(var mid in GameControl.missiondb.get_ids()) {
-			if (GameControl.control.pad.ongoing_missions.Contains (mid) ||
+			if (OngoingMission.get_missions(GameControl.control.pad.ongoing_missions).Contains (mid) ||
 				GameControl.control.pad.completed_missions.Contains (mid)) {
 				Debug.Log ("Skipping ongoing/completed mission " + mid.id);
 				continue;
@@ -67,17 +67,17 @@ public class MissionSelector : MonoBehaviour {
 				pipe_y += 2.0f;
 			}
 		}
+		Debug.Log ("===== fillMissionPipeline: Buttons =====");
 		float panel_y = 0.0f;
-		foreach (var mid in GameControl.control.pad.ongoing_missions) {
+		foreach (var mid in OngoingMission.get_missions(GameControl.control.pad.ongoing_missions)) {
 			Debug.Log ("Instantiating button " + mid.id + " at y=" + (panel_y).ToString ());
 			panel_y += button_offset;
 			RectTransform containerRectTransform = panel.GetComponent<RectTransform> ();
 			containerRectTransform.offsetMin = new Vector2 (containerRectTransform.offsetMin.x, -button_offset);
 			containerRectTransform.offsetMax = new Vector2 (containerRectTransform.offsetMax.x, -panel_y-button_offset/2);
-			//containerRectTransform.offsetMin = new Vector2(containerRectTransform.offsetMin.x, -scrollHeight / 2);
-			//containerRectTransform.offsetMax = new Vector2(containerRectTransform.offsetMax.x, scrollHeight / 2);
 			MissionButton mb = gameObject.AddComponent<MissionButton> ();
 			mb.init (mid, panel, new Vector3 (0, panel_y - button_offset, 0));
 		}
+		Debug.Log ("===== fillMissionPipeline: done =====");
 	}
 }

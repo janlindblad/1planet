@@ -23,9 +23,7 @@ public class Briefing : MonoBehaviour {
 	}
 
 	public void mission_accepted() {
-		GameControl.control.pad.ongoing_missions.Add(mission.id);
-		Debug.Log (GameControl.control.pad.ongoing_missions.Count);
-		Debug.Log (GameControl.control.pad.ongoing_missions[0]);
+		GameControl.control.commence_mission (mission.id);
 	}
 	public void mission_rejected() {
 	}

@@ -9,8 +9,10 @@ public class MissionBall : MonoBehaviour {
 
 	public void init(MissionID mid, GameObject parent, Vector3 position, bool freeze = false) {
 		mission = GameControl.missiondb.get_mission (mid);
-		if(mission == null)
-			Debug.Log ("MissionBall: mid " + mid.id + " not found");
+		if (mission == null) {
+			Debug.LogError ("MissionBall: mid " + mid.id + " not found");
+			return;
+		}
 		Debug.Log ("MissionBall: mid " + mid.id + " size:" + mission.size.ToString()+
 			" prefab:"+"Prefabs/MissionBalls/"+mission.balltype);
 		//sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -27,7 +29,7 @@ public class MissionBall : MonoBehaviour {
 		//Material mat = Resources.Load("Materials/proto_map") as Material;
 		//Debug.Log (mat);
 		//mr.material = mat;
-		Debug.Log ("Instantiantion successful");
+		Debug.Log ("MissionBall: Instantiantion successful");
 		if (freeze) {
 			sphere.GetComponent<Rigidbody>().constraints = 
 				RigidbodyConstraints.FreezeRotationX | 
@@ -36,7 +38,7 @@ public class MissionBall : MonoBehaviour {
 				RigidbodyConstraints.FreezePositionY |
 				RigidbodyConstraints.FreezePositionZ;
 			sphere.transform.localScale = new Vector3 (40f, 40f, 0.4f);
-			sphere.transform.localPosition = new Vector3 (-140f, 0f, -0.1f);
+			sphere.transform.localPosition = new Vector3 (-140f, 0f, 0f);
 			Collider collider = gameObject.transform.GetComponentInChildren<Collider> ();
 			collider.enabled = false;
 		}
