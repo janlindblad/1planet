@@ -73,6 +73,28 @@ using UnityEngine.SceneManagement;
 		}
 		return Timing.Overdue;
 	}
+	public TimeSpan get_remaining_time() {
+		switch (get_timing ()) {
+		case Timing.Ongoing:
+			return start.AddDays (days).Subtract (DateTime.Now);
+		default:
+			return start.AddDays (2 * days).Subtract (DateTime.Now);
+		}
+	}
+	public string get_remaining_time_description() {
+		TimeSpan remain = get_remaining_time ();
+		if (remain.TotalMinutes < 3f)
+			return String.Format("{0:N0} sekunder", remain.TotalSeconds);
+		if (remain.TotalHours < 1.5f)
+			return String.Format("{0:N0} minuter", remain.TotalMinutes);
+		if (remain.TotalDays < 1.5f)
+			return String.Format("{0:N0} timmar", remain.TotalHours);
+		if (remain.TotalDays < 10f)
+			return String.Format("{0:N0} dagar", remain.TotalDays);
+		if (remain.TotalDays < 30f)
+			return String.Format("{0:N0} veckor", remain.TotalDays/7);
+		return String.Format("{0:N0} månader", remain.TotalDays/30);
+	}
 }
 
 public class Mission { //: MonoBehaviour {

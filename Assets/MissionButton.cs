@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class MissionButton : MonoBehaviour {
 	GameObject button;
@@ -19,7 +20,7 @@ public class MissionButton : MonoBehaviour {
 			return;
 		}
 		mission = GameControl.missiondb.get_mission (mid);
-		Object mission_prefab;
+		UnityEngine.Object mission_prefab;
 		switch (omi.get_timing ()) {
 		case OngoingMission.Timing.Ongoing:
 			mission_prefab = Resources.Load ("Prefabs/MissionButtons/OngoingMission");
@@ -53,13 +54,17 @@ public class MissionButton : MonoBehaviour {
 
 		// Setup timer
 		mission_timer = button.GetComponentInChildren<Slider> ();
-		mission_timer.maxValue = 17;
-		mission_timer.minValue = 0;
-		mission_timer.value = 15;
+		if (omi.get_timing () != OngoingMission.Timing.Overdue) {
+			TimeSpan remain = omi.get_remaining_time ();
+			mission_timer.maxValue = omi.days * 24 * 60;
+			mission_timer.minValue = 0;
+			mission_timer.value = (int)remain.TotalMinutes;
 
-		mission_timer_text = mission_timer.GetComponentInChildren<Text> ();
-		mission_timer_text.text = mission_timer_text.text = "20 min";
-
+			mission_timer_text = mission_timer.GetComponentInChildren<Text> ();
+			mission_timer_text.text = mission_timer_text.text = omi.get_remaining_time_description();
+		} else {
+			mission_timer.enabled = false;
+		}
 	}
 
 	// Use this for initialization
