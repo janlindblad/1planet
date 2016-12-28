@@ -850,14 +850,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0904e51a6424c688334f5a851ea8f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: 
+  nextScene: Mission
   animationStyle: shake
-  animationFrames: 20
+  animationFrames: 30
   lightA: {fileID: 0}
   lightB: {fileID: 0}
+  cameraA: {fileID: 2074210511}
   lightAttenuation: 0.95
-  initialSpeed: 0.02
-  acceleration: 1.2
+  initialSpeed: 45
+  acceleration: 0.9
 --- !u!1 &716955212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,6 +1346,7 @@ MonoBehaviour:
   animationFrames: 40
   lightA: {fileID: 0}
   lightB: {fileID: 0}
+  cameraA: {fileID: 0}
   lightAttenuation: 0.95
   initialSpeed: 20
   acceleration: 0.9
@@ -2022,6 +2024,7 @@ MonoBehaviour:
   animationFrames: 20
   lightA: {fileID: 0}
   lightB: {fileID: 0}
+  cameraA: {fileID: 0}
   lightAttenuation: 0.95
   initialSpeed: 0.02
   acceleration: 1.2

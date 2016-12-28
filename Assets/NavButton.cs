@@ -10,6 +10,7 @@ public class NavButton : MonoBehaviour {
 	public int animationFrames = 20;
 	public Light lightA;
 	public Light lightB;
+	public Camera cameraA;
 	public float lightAttenuation = 0.95f;
 	public float initialSpeed = 0.02f;
 	public float acceleration = 1.2f;
@@ -41,6 +42,10 @@ public class NavButton : MonoBehaviour {
 				pos += speed;
 				gameObject.transform.rotation = 
 					Quaternion.Euler (new Vector3 (0, pos, 0));
+				speed *= acceleration;
+			} else if (animationStyle == "shake") {
+				cameraA.transform.rotation = 
+					Quaternion.Euler (new Vector3 (0, 0, Random.Range(-speed,speed)));
 				speed *= acceleration;
 			}
 
