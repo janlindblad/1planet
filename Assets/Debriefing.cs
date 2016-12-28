@@ -7,15 +7,21 @@ public class Debriefing : MonoBehaviour {
 	public GameObject missionGem;
 	public GameObject missionText;
 	public GameObject missionExplosion;
-	bool exploding;
+	public GameObject missionEncircling;
+	public GameObject content;
+	bool ending;
 	float gemsize;
 	float r;
 	float t;
 	// Use this for initialization
 	void Start () {
 		t = 1;
-		exploding = false;
+		ending = false;
 		gemsize = 1;
+		content.transform.localPosition = new Vector3 (
+			content.transform.localPosition.x, 
+			500f,
+			content.transform.localPosition.z);
 	}
 	
 	// Update is called once per frame
@@ -24,7 +30,7 @@ public class Debriefing : MonoBehaviour {
 		missionGem.transform.rotation = Quaternion.Euler (new Vector3 (r, r, r));
 		t *= 0.9998f;
 		missionText.transform.localPosition = new Vector3 (0, 0.55f - t, 0);
-		if (exploding) {
+		if (ending) {
 			gemsize *= 0.9f;
 			missionGem.transform.localScale = new Vector3 (gemsize, gemsize, gemsize);
 		} else {
@@ -33,14 +39,20 @@ public class Debriefing : MonoBehaviour {
 				Vector3.up,
 				0.1f);
 		}
-
+		if (content.transform.localPosition.y < 1450) {
+			content.transform.localPosition = new Vector3 (
+				content.transform.localPosition.x, 
+				content.transform.localPosition.y + 3f,
+				content.transform.localPosition.z);
+		}
 	}
 
 	public void Explode() {
-		//missionGem.SetActive (false);
-		//missionGem.transform.localScale = new Vector3(.01f,.01f,.01f);
-		exploding = true;
+		ending = true;
 		missionExplosion.SetActive(true);
-		//stars.transform.rotation = Quaternion.identity;
+	}
+	public void Encircling() {
+		ending = true;
+		missionEncircling.SetActive(true);
 	}
 }
