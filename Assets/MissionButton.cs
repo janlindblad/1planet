@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class MissionButton : MonoBehaviour {
 	GameObject button;
@@ -74,6 +75,8 @@ public class MissionButton : MonoBehaviour {
 
 	void button_clicked() {
 		Debug.Log ("MissionButton " + omi.id.id + " clicked");
+		GameControl.control.selected_mission = omi.id;
+		SceneManager.LoadScene ("Debriefing");
 	}
 
 	// Use this for initialization
