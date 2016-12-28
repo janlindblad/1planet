@@ -23,8 +23,14 @@ public class Briefing : MonoBehaviour {
 	}
 
 	public void mission_accepted() {
-		GameControl.control.commence_mission (mission.id);
+		GameControl.control.commence_mission(mission.id);
 	}
 	public void mission_rejected() {
+	}
+	public void mission_completed() {
+		GameControl.control.completed_mission (mission.id);
+	}
+	public void mission_failed() {
+		GameControl.control.failed_mission (mission.id);
 	}
 }

@@ -60,6 +60,9 @@ public class GameControl : MonoBehaviour {
 		Save (pad);
 	}
 
+	static public void ResetAllGameData() {
+		control.pad = new PersistGameData ();
+	}
 	public void Save(PersistGameData gd) {
 		FileStream fs = File.Create (persistFileName);
 		bf.Serialize (fs, gd);
@@ -84,8 +87,31 @@ public class GameControl : MonoBehaviour {
 			Debug.LogError ("commence_mission mission not found!");
 			return;
 		}
+		Debug.Log ("CommenceMission: completed=" + pad.completed_missions.Count+" ongoing="+pad.ongoing_missions.Count);
 		pad.ongoing_missions.Add (
 			new OngoingMission (mid, m.days));
+		Debug.Log ("CommenceMission: completed=" + pad.completed_missions.Count+" ongoing="+pad.ongoing_missions.Count);
+	}
+	public void completed_mission(MissionID mid) {
+		Mission m = missiondb.get_mission (mid);
+		if (m == null) {
+			Debug.LogError ("completed_mission mission not found!");
+			return;
+		}
+		Debug.Log ("CompletedMission: completed=" + pad.completed_missions.Count+" ongoing="+pad.ongoing_missions.Count);
+		pad.completed_missions.Add (mid);
+		pad.ongoing_missions.RemoveAll (MissionID.ByMID (mid));
+		Debug.Log ("CompletedMission: completed=" + pad.completed_missions.Count+" ongoing="+pad.ongoing_missions.Count);
+	}
+	public void failed_mission(MissionID mid) {
+		Mission m = missiondb.get_mission (mid);
+		if (m == null) {
+			Debug.LogError ("failed_mission mission not found!");
+			return;
+		}
+		Debug.Log ("FailedMission: completed=" + pad.completed_missions.Count+" ongoing="+pad.ongoing_missions.Count);
+		pad.ongoing_missions.RemoveAll (MissionID.ByMID (mid));
+		Debug.Log ("FailedMission: completed=" + pad.completed_missions.Count+" ongoing="+pad.ongoing_missions.Count);
 	}
 	public List<MissionID> get_ongoing_missions() {
 		return OngoingMission.get_missions (pad.ongoing_missions);

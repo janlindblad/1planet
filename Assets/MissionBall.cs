@@ -13,8 +13,8 @@ public class MissionBall : MonoBehaviour {
 			Debug.LogError ("MissionBall: mid " + mid.id + " not found");
 			return;
 		}
-		Debug.Log ("MissionBall: mid " + mid.id + " size:" + mission.size.ToString()+
-			" prefab:"+"Prefabs/MissionBalls/"+mission.balltype);
+		//Debug.Log ("MissionBall: mid " + mid.id + " size:" + mission.size.ToString()+
+		//	" prefab:"+"Prefabs/MissionBalls/"+mission.balltype);
 		//sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 		sphere = Instantiate(
 			Resources.Load("Prefabs/MissionBalls/"+mission.balltype), 
@@ -29,7 +29,7 @@ public class MissionBall : MonoBehaviour {
 		//Material mat = Resources.Load("Materials/proto_map") as Material;
 		//Debug.Log (mat);
 		//mr.material = mat;
-		Debug.Log ("MissionBall: Instantiantion successful");
+		//Debug.Log ("MissionBall: Instantiantion successful");
 		if (freeze) {
 			sphere.GetComponent<Rigidbody>().constraints = 
 				RigidbodyConstraints.FreezeRotationX | 

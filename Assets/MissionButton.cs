@@ -42,7 +42,7 @@ public class MissionButton : MonoBehaviour {
 		button.name = mission.id.id;
 		button.transform.localScale = new Vector3 (1, 1, 1);
 		button.transform.localPosition = position;
-		Debug.Log ("MissionButton: Instantiantion successful");
+		//Debug.Log ("MissionButton: Instantiantion successful");
 		Button uibutton = button.GetComponent<Button>();
 		uibutton.onClick.AddListener(() => {
 			button_clicked();

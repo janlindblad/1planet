@@ -315,8 +315,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1951777595}
   m_HandleRect: {fileID: 1951777594}
   m_Direction: 2
-  m_Value: 0.9295128
-  m_Size: 0.6366
+  m_Value: 0.8060341
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -416,7 +416,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &486187513
 GameObject:
@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: 486187516}
   - component: {fileID: 486187515}
   m_Layer: 5
-  m_Name: SuccessButton
+  m_Name: CompletedButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0904e51a6424c688334f5a851ea8f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Status
+  nextScene: Mission
   animationStyle: fall
   animationFrames: 20
   lightA: {fileID: 0}
@@ -527,7 +527,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1112962747}
-        m_MethodName: mission_accepted
+        m_MethodName: mission_completed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -949,7 +949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0904e51a6424c688334f5a851ea8f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: 
+  nextScene: Mission
   animationStyle: shake
   animationFrames: 20
   lightA: {fileID: 0}
@@ -1008,7 +1008,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1112962747}
-        m_MethodName: mission_rejected
+        m_MethodName: mission_failed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1259,6 +1259,52 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1150460443}
+--- !u!1 &1404692094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1404692096}
+  - component: {fileID: 1404692095}
+  m_Layer: 0
+  m_Name: GameControlObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1404692095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1404692094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 708902f2d9668452a9b61a214be2f7ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pad:
+    welcomed: 0
+    completed_missions: []
+    ongoing_missions: []
+  selected_mission:
+    id: 
+--- !u!4 &1404692096
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1404692094}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1468581342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,7 +1396,7 @@ Transform:
   - {fileID: 1717984984}
   - {fileID: 1827521350}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -40, y: 0, z: 0}
 --- !u!45 &1468581348
 Skybox:
@@ -1513,7 +1559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 128.0751}
+  m_AnchoredPosition: {x: 0, y: 969.82947}
   m_SizeDelta: {x: 0, y: 5000}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1646043414
