@@ -4,10 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MissionBall : MonoBehaviour {
-	GameObject sphere;
+	public GameObject gem;
 	Mission mission;
 
-	public void init(MissionID mid, GameObject parent, Vector3 position, bool freeze = false) {
+	public void init(
+		MissionID mid, 
+		GameObject parent, 
+		Vector3 position, 
+		bool freeze = false,
+		Vector3? localPosition = null, 
+		Vector3? localScale = null) {
+
 		mission = GameControl.missiondb.get_mission (mid);
 		if (mission == null) {
 			Debug.LogError ("MissionBall: mid " + mid.id + " not found");
@@ -16,14 +23,21 @@ public class MissionBall : MonoBehaviour {
 		//Debug.Log ("MissionBall: mid " + mid.id + " size:" + mission.size.ToString()+
 		//	" prefab:"+"Prefabs/MissionBalls/"+mission.balltype);
 		//sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-		sphere = Instantiate(
+		gem = Instantiate(
 			Resources.Load("Prefabs/MissionBalls/"+mission.balltype), 
 			position, 
 			Quaternion.identity,
 			parent.transform) as GameObject;
-		sphere.name = mission.id.id;
-		float bsiz = 0.5f + mission.size / 4.0f;
-		sphere.transform.localScale = new Vector3 (bsiz, bsiz, bsiz);
+		gem.name = mission.id.id;
+		if (localScale != null) {
+			gem.transform.localScale = (Vector3)localScale;
+		} else {
+			float bsiz = 0.5f + mission.size / 4.0f;
+			gem.transform.localScale = new Vector3 (bsiz, bsiz, bsiz);
+		}
+		if (localPosition != null) {
+			gem.transform.localPosition = (Vector3)localPosition;
+		}
 		//MeshRenderer mr = sphere.GetComponent<MeshRenderer>();
 		//Debug.Log (mr);
 		//Material mat = Resources.Load("Materials/proto_map") as Material;
@@ -31,14 +45,12 @@ public class MissionBall : MonoBehaviour {
 		//mr.material = mat;
 		//Debug.Log ("MissionBall: Instantiantion successful");
 		if (freeze) {
-			sphere.GetComponent<Rigidbody>().constraints = 
+			gem.GetComponent<Rigidbody>().constraints = 
 				RigidbodyConstraints.FreezeRotationX | 
 				RigidbodyConstraints.FreezeRotationY |
 				RigidbodyConstraints.FreezePositionX | 
 				RigidbodyConstraints.FreezePositionY |
 				RigidbodyConstraints.FreezePositionZ;
-			sphere.transform.localScale = new Vector3 (40f, 40f, 0.4f);
-			sphere.transform.localPosition = new Vector3 (-140f, 0f, 0f);
 			Collider collider = gameObject.transform.GetComponentInChildren<Collider> ();
 			collider.enabled = false;
 		}

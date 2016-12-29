@@ -12,7 +12,7 @@ public class Briefing : MonoBehaviour {
 		mission_desc = gameObject.GetComponentInChildren<Text> ();
 		mission = GameControl.missiondb.get_mission (GameControl.control.selected_mission);
 		if(mission == null) {
-			Debug.LogError ("mission_completed: No mission");
+			Debug.LogError ("briefing: No mission");
 			mission_desc.text = "Uppdrag> No title";
 			return;
 		}
@@ -35,19 +35,5 @@ public class Briefing : MonoBehaviour {
 		GameControl.control.commence_mission(mission.id);
 	}
 	public void mission_rejected() {
-	}
-	public void mission_completed() {
-		if (mission == null) {
-			Debug.LogError ("mission_completed: No mission");
-			return;
-		}
-		GameControl.control.completed_mission (mission.id);
-	}
-	public void mission_failed() {
-		if (mission == null) {
-			Debug.LogError ("mission_failed: No mission");
-			return;
-		}
-		GameControl.control.failed_mission (mission.id);
 	}
 }

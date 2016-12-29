@@ -51,8 +51,8 @@ public class MissionButton : MonoBehaviour {
 
 		// Setup sphere
 		ball = button.AddComponent<MissionBall> ();
-		ball.init(mid, button, new Vector3(0, 0, 0), true);
-		//ball.transform.localScale = new Vector3 (0.9f, 0.9f, 0.9f);
+		ball.init(mid, button, new Vector3(0, 0, 0), true, 
+			new Vector3 (-140f, 0f, 0f), new Vector3 (40f, 40f, 0.4f));
 
 		// Setup text
 		mission_title = button.GetComponentInChildren<Text> ();
