@@ -61,7 +61,7 @@ public class MissionSelector : MonoBehaviour {
 				//Debug.Log ("Skipping ongoing/completed mission " + mid.id);
 				continue;
 			} else {
-				//Debug.Log ("Instantiating ball " + mid.id);
+				Debug.Log ("Instantiating ball " + mid.id);
 				MissionBall mb = gameObject.AddComponent<MissionBall> ();
 				mb.init (mid, pipe, new Vector3 ((Random.value - 0.5f) * 2.0f, pipe_y, 0));
 				pipe_y += 2.0f;
