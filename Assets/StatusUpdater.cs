@@ -14,6 +14,7 @@ public class StatusUpdater : MonoBehaviour {
 		status.text = "Level 1:   " + ((int)(100.0f*num_completed/num_total)).ToString() + "%\n\n"
 			+ (num_completed * 102+25).ToString() + " XP\n"
 			+ (num_completed).ToString() + " Avklarade uppdrag\n"
+			+ (num_ongoing).ToString() + " Pågående uppdrag\n"
 			+ "3 Vänner\n"
 			+ "1 Rösttyrka\n";
 			

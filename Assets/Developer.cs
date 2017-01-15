@@ -13,9 +13,9 @@ public class Developer : MonoBehaviour {
 
 	void UpdateStatus() {
 		status.text = "Status:\n";
-		status.text += "\nTotal missions: " + GameControl.missiondb.get_ids ().Length.ToString ();
-		status.text += "\nOngoing missions: " + GameControl.control.pad.ongoing_missions.Count.ToString ();
-		status.text += "\nComplpeted missions: " + GameControl.control.pad.completed_missions.Count.ToString ();
+		status.text += "\nTotalt antal uppdrag: " + GameControl.missiondb.get_ids ().Length.ToString ();
+		status.text += "\nPågående uppdrag: " + GameControl.control.pad.ongoing_missions.Count.ToString ();
+		status.text += "\nAvklarade uppdrag: " + GameControl.control.pad.completed_missions.Count.ToString ();
 	}
 		
 	// Update is called once per frame

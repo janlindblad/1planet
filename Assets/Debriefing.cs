@@ -15,6 +15,7 @@ public class Debriefing : MonoBehaviour {
 	float gemsize;
 	float r;
 	float t;
+	float scrollspeed = 3f;
 
 	Mission mission;
 	Text mission_desc;
@@ -64,11 +65,14 @@ public class Debriefing : MonoBehaviour {
 				0.1f);
 		}
 		if (content.transform.localPosition.y < 1450) {
-			content.transform.localPosition = new Vector3 (
-				content.transform.localPosition.x, 
-				content.transform.localPosition.y + 3f,
-				content.transform.localPosition.z);
+			scrollspeed = 3f;
+		} else {
+			scrollspeed *= 0.95f;
 		}
+		content.transform.localPosition = new Vector3 (
+			content.transform.localPosition.x, 
+			content.transform.localPosition.y + scrollspeed,
+			content.transform.localPosition.z);
 	}
 
 	public void Explode() {
